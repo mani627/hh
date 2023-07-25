@@ -2,12 +2,17 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const Create_User = require("./Model/User_Details")
-
+const dotenv = require('dotenv');
 
 
 // Parsing request body
 app.use(express.json());
 
+
+//database constant config .env
+dotenv.config({
+    path: "./.env"
+})
 
 
 
@@ -36,6 +41,14 @@ app.post("/Create_User", async (req, res, next) => {
 })
 
 
+// Creating User
+app.get("/Welcome", async (req, res, next) => {
+
+   
+    res.send("Hy mani")
+
+})
+
 
 
 
@@ -61,7 +74,8 @@ app.use((err, req, res, next) => {
 
 
 
-app.listen(PORT, (error) => {
+app.listen(
+    process.env.PORT||PORT, (error) => {
     if (error) {
         console.log("error occured");
     }
