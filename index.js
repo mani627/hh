@@ -29,7 +29,7 @@ app.post("/Create_User", async (req, res, next) => {
         })
         res.send(result)
     } catch (er) {
-        next(er)
+        next(er);
     }
 
 
